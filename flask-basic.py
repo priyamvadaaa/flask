@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response , jsonify
 
 app = Flask(__name__)
 
@@ -33,6 +33,10 @@ def basic():
 @app.route('/add/<int:a>/<int:b>')
 def add(a,b):
     return f'{a}+{b}={a+b}'
+
+@app.errorhandler(404)
+def not_found(error):
+    return 'Not found',404
 
 @app.route('/handle_url_params')
 def handle_parms():
