@@ -45,7 +45,8 @@ class Items(Resource):
         '''creating new task with validation'''
 
         try:
-            data=task_schema.load(request.get_json())
+            data=request.get_json()
+
         except ValidationError as err:
             return err.messages, 404
 
